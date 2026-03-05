@@ -152,7 +152,7 @@ websocket-client-service/
 
 ## Configuration
 
-**Server** `application.properties`:
+**Server** `application.yaml`:
 ```yaml
 server:
   port: 8080                      # Swagger UI port
@@ -173,7 +173,7 @@ users:
   file: users.txt                 # Classpath credentials file
 ```
 
-**Client** `application.properties`:
+**Client** `application.yaml`:
 ```yaml
 server:
   port: 8081                      # REST API / Swagger UI port
