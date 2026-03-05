@@ -1,24 +1,3 @@
-#server:
-#   port: 8081
-#socket:
-#    host: localhost
-#    port: 9091
-#
-#spring:
-#  application:
-#    name: websocket-client-service
-#
-#client-username: user1
-#client-password: password1
-#
-#reconnect:
-#  delay:
-#    ms: 5000
-#
-#heartbeat:
-#  interval:
-#    ms: 10000   # every 10 seconds
-
 server:
   port: 8081   # REST/Swagger UI port for client
 
