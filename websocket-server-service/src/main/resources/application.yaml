@@ -1,0 +1,36 @@
+#server:
+#   port: 8080
+#
+#spring:
+#  application:
+#    name: websocket-server-service
+#
+#socket:
+#  port: 9091
+#  timeout:
+#    ms: 30000
+#
+#csv:
+#  file: Data_20251211.csv
+#
+#users:
+#  file: users.txt
+
+
+server:
+  port: 8080   # REST/Swagger UI port
+
+spring:
+  application:
+    name: websocket-server-service
+
+socket:
+  port: 9091   # Socket server port
+  timeout:
+    ms: 30000  # 30s timeout for client inactivity
+
+csv:
+  file: Data_20251211.csv   # CSV file with company data
+
+users:
+  file: users.txt           # User credentials file
