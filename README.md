@@ -155,7 +155,7 @@ websocket-client-service/
 **Server** `application.yaml`:
 ```yaml
 server:
-  port: 8080                      # Swagger UI port
+  port: 8080                      # server port
 
 spring:
   application:
