@@ -130,7 +130,7 @@ websocket-server-service/
 │   ├── CryptoUtil.java          # AES encrypt/decrypt — ThreadLocal key per connection
 │   └── Iso8583Util.java         # Build/parse simplified ISO 8583 binary frames
 └── resources/
-    ├── application.properties
+    ├── application.yaml
     ├── data.csv                 # Company data
     └── users.txt                # Credentials (username:password per line)
 
@@ -143,9 +143,11 @@ websocket-client-service/
 │   └── HeartbeatService.java    # Sends PING, reads PONG — throws IOException on failure
 ├── protocol/
 │   └── MessageProtocol.java     # Mirrors server protocol
-└── utils/
-    ├── CryptoUtil.java          # AES encrypt/decrypt — volatile static key (single conn)
-    └── Iso8583Util.java         # Build/parse simplified ISO 8583 binary frames
+├── utils/
+|    ├── CryptoUtil.java          # AES encrypt/decrypt — volatile static key (single conn)
+|    └── Iso8583Util.java         # Build/parse simplified ISO 8583 binary frames
+└── resources/
+    ├── application.yaml
 ```
 
 ---
