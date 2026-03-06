@@ -1,5 +1,6 @@
 package com.sanjay.server;
 
+import com.sanjay.exception.SocketNotConnectedException;
 import com.sanjay.handler.ClientHandler;
 import com.sanjay.service.CsvService;
 import com.sanjay.service.UserService;
@@ -38,8 +39,9 @@ public class SocketServer {
                     Socket client = serverSocket.accept();
                     new Thread(new ClientHandler(client, timeout, userService, csvService)).start();
                 }
-            } catch (IOException e) {
-                logger.error("Server error", e);
+            } catch (SocketNotConnectedException | IOException e) {
+                logger.error("Server connection is unavailable.", e);
+                throw new SocketNotConnectedException("Server connection is unavailable. Please retry shortly.");
             }
         });
     }

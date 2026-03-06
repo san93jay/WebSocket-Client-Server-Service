@@ -35,7 +35,10 @@ public class QueryController {
                     content = @Content(mediaType = "text/plain",
                             schema = @Schema(type = "string"))
             )
-            @org.springframework.web.bind.annotation.RequestBody String query) {
+            @org.springframework.web.bind.annotation.RequestBody String query) throws Exception {
+        if (query == null || query.isBlank()) {
+            throw new IllegalArgumentException("Query must not be blank.");
+        }
         return socketClient.sendQuery(query.trim());
     }
 
@@ -59,6 +62,9 @@ public class QueryController {
     })
 
     public String balanceEnquiry(@PathVariable String company) {
+        if (company == null || company.isBlank()) {
+            throw new IllegalArgumentException("Company name must not be blank.");
+        }
         return socketClient.sendBalanceEnquiry(company);
     }
 }

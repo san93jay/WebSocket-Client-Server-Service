@@ -1,5 +1,6 @@
 package com.sanjay.client.service.protocol;
 
+import com.sanjay.client.service.exception.QueryException;
 import com.sanjay.client.service.utils.CryptoUtil;
 
 import java.io.DataInputStream;
@@ -16,7 +17,7 @@ public class MessageProtocol {
     }
 
     // Send encrypted text message (auth, CSV, queries, heartbeat)
-    public static void send(DataOutputStream out, byte opcode, String payload) throws IOException {
+    public static void send(DataOutputStream out, byte opcode, String payload) throws QueryException {
         try {
             String encrypted = payload != null ? CryptoUtil.encrypt(payload) : "";
             byte[] data = encrypted.getBytes(StandardCharsets.UTF_8);
@@ -25,7 +26,7 @@ public class MessageProtocol {
             out.write(data);
             out.flush();
         } catch (Exception e) {
-            throw new IOException("Encryption failed", e);
+            throw new QueryException("Encryption failed", e);
         }
     }
 

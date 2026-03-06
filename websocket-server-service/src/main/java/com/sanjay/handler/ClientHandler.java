@@ -1,5 +1,6 @@
 package com.sanjay.handler;
 
+import com.sanjay.exception.QueryException;
 import com.sanjay.protocol.MessageProtocol;
 import com.sanjay.service.CsvService;
 import com.sanjay.service.UserService;
@@ -138,7 +139,7 @@ public class ClientHandler implements Runnable {
 
                     if (query.isEmpty()) {
                         logger.warn("Received empty query, ignoring");
-                        continue;
+                        throw new QueryException("Received empty query");
                     }
 
                     logger.info("Query: '{}'", query);

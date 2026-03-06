@@ -1,5 +1,6 @@
 package com.sanjay.client.service.client;
 
+import com.sanjay.client.service.exception.QueryException;
 import com.sanjay.client.service.protocol.MessageProtocol;
 import com.sanjay.client.service.protocol.MessageProtocol.Message;
 import com.sanjay.client.service.service.HeartbeatService;
@@ -159,7 +160,7 @@ public class SocketClient {
         });
     }
 
-    public String sendQuery(String query) {
+    public String sendQuery(String query) throws Exception {
         try {
             synchronized (ioLock) {
                 MessageProtocol.send(out, (byte) 0x06, query);
@@ -174,9 +175,12 @@ public class SocketClient {
                 String encrypted = new String(msg.rawPayload, StandardCharsets.UTF_8);
                 return CryptoUtil.decrypt(encrypted);
             }
-        } catch (Exception e) {
+        } catch (QueryException e) {
             logger.error("Failed to send query", e);
-            return "Error: " + e.getMessage();
+            throw  new QueryException("Failed to send query", e);
+        }catch (Exception ex){
+            logger.error("Failed to send query", ex);
+            throw ex;
         }
     }
 
