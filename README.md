@@ -9,7 +9,7 @@ A Spring Boot TCP socket application featuring RSA/AES encryption, credential-ba
 ```
 ┌──────────────────────────────────┐              ┌──────────────────────────────────┐
 │     websocket-client-service     │              │     websocket-server-service     │
-│           (port 8081)            │              │      (configurable TCP port)     │
+│                                  │              │      (configurable TCP port)     │
 │                                  │              │                                  │
 │  QueryController  (REST API)     │              │  SocketServer                    │
 │         ↓                        │◄────TCP─────►│         ↓                        │
@@ -274,4 +274,21 @@ CountDownLatch fires → disconnectLatch.await() unblocks
 finally block → shuts down scheduler, clears AES key, sleeps reconnect.delay.ms
         ↓
 while(true) retries → full RSA + Auth + CSV handshake
+
 ```
+
+## Setup before start application
+
+```
+mvn clean install   -> for both application (Client and Server)
+
+First start Server (from main method )
+
+Second start Client ( from main method)
+
+```
+
+
+
+
+
